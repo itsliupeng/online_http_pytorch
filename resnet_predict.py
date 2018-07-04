@@ -51,7 +51,7 @@ def predict(img):
     result = []
     for i, score in zip(idx, scores):
         tag = imagenet_class_idx[str(i)][1]
-        result.append({'class': tag, 'score': score})
+        result.append({'class': tag, 'score': float(score)})
 
     return result
 

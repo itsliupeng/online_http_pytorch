@@ -63,7 +63,7 @@ async def detect_fn(request):
             return web.json_response({'error_code': -1, 'msg': 'read image error' + str(e)})
 
         data = resnet_predict(img)
-        return web.json_response({'error_code': 0, 'msg': '', 'data': data})
+        return web.json_response({'error_code': 0, 'data': data})
 
     else:
         return web.json_response({'error_code': -1, 'msg': 'no file found in post request'})
