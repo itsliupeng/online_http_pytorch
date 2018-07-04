@@ -7,7 +7,6 @@ import psutil
 import torch
 from PIL import Image
 from aiohttp import web
-from resnet_predict import predict as resnet_predict
 
 use_gpu = torch.cuda.is_available()
 
@@ -32,7 +31,7 @@ def get_gpu_id():
 
             if not bind_gpu:
                 print('waiting pid %s to bind gpu' % str(pid))
-                time.sleep(10)
+                time.sleep(3)
                 return get_gpu_id()
     else:
         return ''
@@ -41,6 +40,9 @@ def get_gpu_id():
 os.environ['CUDA_VISIBLE_DEVICES'] = str(get_gpu_id())
 if use_gpu:
     print('get GPU ' + os.environ['CUDA_VISIBLE_DEVICES'])
+
+# should after call get_cpu_id()
+from resnet_predict import predict as resnet_predict
 
 routes = web.RouteTableDef()
 
