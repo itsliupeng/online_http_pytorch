@@ -7,14 +7,13 @@ import psutil
 import torch
 from PIL import Image
 from aiohttp import web
+import gpu_stat
 
-use_gpu = torch.cuda.is_available()
+use_gpu = len(gpu_stat.get_available_gpu_ids()) > 0
 
 
 def get_gpu_id():
     if use_gpu:
-        import gpu_stat
-
         current_pid = os.getpid()
         print('current_pid: ' + str(current_pid))
         sibling_pid_time = sorted(map(lambda x: (x.pid, x.create_time()), psutil.Process(current_pid).parent().children()), key=lambda x: x[1])
