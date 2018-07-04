@@ -8,7 +8,7 @@ from torch.autograd import Variable
 from torch.nn import functional as F
 from torchvision import transforms
 
-imagenet_class_idx = json.load(open('imagenet_class_index.json'))
+imagenet_class_idx = json.load(open('data/imagenet_class_index.json'))
 model = torchvision.models.resnet101(pretrained=True)
 model.eval()
 use_gpu = torch.cuda.is_available()
@@ -57,5 +57,5 @@ def predict(img):
 
 
 # initialize before first http request
-img = Image.open('lenna.jpg').convert('RGB')
+img = Image.open('data/lenna.jpg').convert('RGB')
 predict(img)
