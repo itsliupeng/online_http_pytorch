@@ -1,0 +1,9 @@
+psutil==5.4.6
+six==1.11.0
+aiohttp==3.3.0
+py3nvml==0.2.0
+numpy==1.12.1
+nvidia_ml_py3==7.352.0
+torch==0.3.1.post2
+Pillow==5.2.0
+torchvision==0.2.1
